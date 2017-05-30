@@ -1,8 +1,12 @@
-FROM debian:jessie
+FROM ubuntu:16.04
 MAINTAINER panterag
 
 
 RUN apt-get update && apt-get install -y apt-utils curl  && apt-get clean
+RUN apt-get install software-properties-common -y
+RUN apt-get install python3-software-properties -y
+RUN apt-get install python-software-properties -y
+
 
 # auto validate license
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
@@ -37,4 +41,3 @@ RUN echo 'PATH="/usr/local/node/bin:${PATH}"' >> /etc/bash.bashrc
 RUN  apt-add-repository ppa:mozillateam/firefox-next
 RUN  apt-get update
 RUN  apt-get install firefox xvfb
-
