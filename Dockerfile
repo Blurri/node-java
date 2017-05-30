@@ -27,3 +27,13 @@ RUN sudo npm install node-gyp -g
 # install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+# install meteor
+RUN curl https://install.meteor.com/ | sh
+RUN apt-get install -y openssh-client
+RUN echo 'PATH="/usr/local/node/bin:${PATH}"' >> /etc/bash.bashrc
+
+# Install firefox
+RUN sudo apt-add-repository ppa:mozillateam/firefox-next
+RUN sudo apt-get update
+RUN sudo apt-get install firefox xvfb
