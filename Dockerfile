@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER panterag
 
 
-RUN apt-get update && apt-get install -y curl && apt-get clean
+RUN apt-get update && apt-get install -y apt-utils curl  && apt-get clean
 
 # auto validate license
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
@@ -21,8 +21,8 @@ RUN apt-get clean
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_6.x
-RUN apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs npm
 RUN npm install node-gyp -g
 # install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -37,3 +37,4 @@ RUN echo 'PATH="/usr/local/node/bin:${PATH}"' >> /etc/bash.bashrc
 RUN  apt-add-repository ppa:mozillateam/firefox-next
 RUN  apt-get update
 RUN  apt-get install firefox xvfb
+
