@@ -40,4 +40,4 @@ RUN echo 'PATH="/usr/local/node/bin:${PATH}"' >> /etc/bash.bashrc
 # Install firefox
 RUN  apt-add-repository ppa:mozillateam/firefox-next
 RUN  apt-get update
-RUN  apt-get install firefox xvfb
+RUN  apt-get install firefox xvfb -y
