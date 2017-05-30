@@ -22,7 +22,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
 # install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get install -y nodejs npm
+RUN apt-get install -y nodejs
 RUN npm install node-gyp -g
 # install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
